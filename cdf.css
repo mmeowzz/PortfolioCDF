@@ -1,0 +1,317 @@
+/* ==== Global Styles ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: #f5f5f5;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark {
+  background: #222;
+  color: #eee;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1, h2, h3 {
+  margin-bottom: 10px;
+}
+section {
+  padding: 60px 10%;
+}
+
+/* ==== Header ==== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  position: sticky;
+  top: 0;
+  background: inherit;
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+nav {
+  display: flex;           /* makes links sit side by side */
+  gap: 20px;               /* space between links */
+  align-items: center;     /* vertical alignment */
+}
+
+nav a {
+  margin: 0;               /* remove old margin */
+  font-weight: 500;
+  position: relative;
+}
+nav a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ff5a5f;
+  transition: 0.3s;
+  margin: auto;
+}
+nav a:hover::after {
+  width: 100%;
+}
+.toggle-btn {
+  padding: 6px 12px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between image + text */
+}
+
+.logo img {
+  width: 40px;   /* adjust size */
+  height: 40px;
+  border-radius: 50%; /* makes it round if image is square */
+}
+
+
+/* ==== Hero Section ==== */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Container for flex split */
+.hero-content {
+  display: flex;
+  flex-wrap: wrap; /* responsive for small screens */
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Left Side */
+.hero-text {
+  flex: 1; /* take half space */
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+/* Right Side */
+.hero-image {
+  flex: 1; /* take half space */
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 400px;           /* fixed width */
+  height: auto;           /* keeps aspect ratio */
+  flex-shrink: 0;         /* prevents shrinking */
+}
+
+/* Text styling */
+.hero-text h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-text p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-text button {
+  padding: 10px 20px;
+  border: none;
+  background: #df30ef;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hero-text button:hover {
+  background: #8e13c8;
+}
+
+/* Gradient Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive for small screens */
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  .hero-text, .hero-image {
+    flex: 100%;
+  }
+}
+
+
+
+/* ==== About ==== */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.about img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* ==== Education ==== */
+.education {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.education-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+body.dark .education-card {
+  background: #333;
+}
+.education-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ==== Projects ==== */
+/* Projects Section Background */
+#projects {
+  background-color: #a18cd1; /* your chosen color */
+  padding: 60px 10%;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: white;           /* white card on colored background */
+  border-radius: 15px;
+  overflow: hidden;            /* ensures image corners are rounded */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+
+body.dark #projects .project-card {
+  background: #333;
+  color: #eee;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Image inside project card */
+.project-card img.project-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card content padding */
+.project-card h3,
+.project-card p {
+  padding: 10px 15px;
+  margin: 0;
+}
+
+.project-card .project-note {
+  font-size: 0.85em;
+  color: #666;   /* gray text */
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Section Heading */
+#projects h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;  /* heading stands out on colored background */
+}
+
+
+/* ==== Contact ==== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+form input, form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+form button {
+  background: #a18cd1;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+form button:hover {
+  background: #a18cd1;
+}
+
+/* ==== Footer ==== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #a18cd1;
+  color: white;
+  margin-top: 40px;
+}
+
+/* ==== Scroll Animation ==== */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
